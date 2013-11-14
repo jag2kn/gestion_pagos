@@ -1,0 +1,12 @@
+Jorge\GespagosBundle\Entity\Pagos:
+    properties:
+        nombre:
+        periodo:
+        constante:
+        monto:
+            - NotBlank: ~
+        descripcion:
+            - Email: ~
+        actualizacion:
+        creacion:
+        id:

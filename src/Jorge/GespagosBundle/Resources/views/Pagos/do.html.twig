@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Realizar Pagos</h1>
+
+    {{ form(do_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pagos') }}">
+            Volver a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

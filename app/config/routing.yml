@@ -1,0 +1,4 @@
+jorge_gespagos:
+    resource: "@JorgeGespagosBundle/Resources/config/routing.yml"
+    prefix:   /
+

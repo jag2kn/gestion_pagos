@@ -1,0 +1,67 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Lista de Pagos - {{ usuario.nombres }} {{ usuario.apellidos }}</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Periodo</th>
+                <th>Constante</th>
+                <th>Monto</th>
+                <th>Descripción</th>
+                <th>Pago</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td><a href="{{ path('pagos_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                <td>{{ entity.periodo }}</td>
+                <td>
+                	{% if entity.constante == 1 %}
+                		Constante
+                	{% else %}
+                		Unico
+                	{% endif %}
+
+                </td>
+                <td>$ {{ entity.monto }}</td>
+                <td>{{ entity.descripcion }}</td>
+                <td>{% if entity.fechapago %}
+                		{{ entity.fechapago|date('Y-m-d') }}<br>
+                		<strong>$ {{ entity.pagorealizado }}</strong>
+                	{% else %}
+                		<strong>Pago no realizado</strong>
+                	{% endif %}</td>
+                <td>
+		                    <a href="{{ path('pagos_show', { 'id': entity.id }) }}">Ver detalles</a><br>
+		                    <a href="{{ path('pagos_edit', { 'id': entity.id }) }}">Editar</a><hr>
+		                    {% if entity.fechapago %}
+						    {% else %}
+		                    <a href="{{ path('pagos_do', { 'id': entity.id }) }}">Realizar pago</a><hr>
+		                   	{% endif %}
+		                    <div style="font-size: 10px;">
+						    Creado: {% if entity.actualizacion %}{{ entity.actualizacion|date('Y-m-d H:i:s') }}{% endif %}<br>
+						    Modificado: {% if entity.creacion %}{{ entity.creacion|date('Y-m-d H:i:s') }}{% endif %}<br>
+						    </div>
+		                </li>
+		            </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('pagos_new') }}">
+                Crear nuevo pago
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

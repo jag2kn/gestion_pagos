@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Jorge\GespagosBundle\Entity\Usuario" table="usuario">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="usuario" type="string" column="usuario" length="128" nullable="false"/>
+    <field name="clave" type="string" column="clave" length="128" nullable="false"/>
+    <field name="nombres" type="string" column="nombres" length="128" nullable="false"/>
+    <field name="apellidos" type="string" column="apellidos" length="128" nullable="false"/>
+    <field name="fecha" type="datetime" column="fecha" nullable="false"/>
+    <field name="correo" type="string" column="correo" length="128" nullable="false"/>
+    <field name="salt" type="string" column="salt" length="32" nullable="false"/>
+  </entity>
+</doctrine-mapping>

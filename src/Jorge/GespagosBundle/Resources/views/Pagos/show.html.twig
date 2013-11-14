@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Pagos</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id pago</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Dueño</th>
+                <td>{{ entity.idUsuario.usuario }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Periodo</th>
+                <td>{{ entity.periodo }}</td>
+            </tr>
+            <tr>
+                <th>Constante</th>
+                <td>{{ entity.constante }}</td>
+            </tr>
+            <tr>
+                <th>Monto</th>
+                <td>{{ entity.monto }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ entity.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Actualizacion</th>
+                <td>{{ entity.actualizacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Creacion</th>
+                <td>{{ entity.creacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+            	<td>Fecha Pago</td>
+                <td>{% if entity.fechapago %}
+                		{{ entity.fechapago|date('Y-m-d') }}<br>
+                		<strong>$ {{ entity.pagorealizado }}</strong>
+                	{% else %}
+                		<strong>Pago no realizado</strong>
+                	{% endif %}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pagos') }}">
+            Volver a la lista de mis pagos
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('pagos_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    {% if entity.fechapago %}
+    {% else %}
+    <li>
+        <a href="{{ path('pagos_do', { 'id': entity.id }) }}">Realizar pago</a>
+    </li>
+    {% endif %}
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

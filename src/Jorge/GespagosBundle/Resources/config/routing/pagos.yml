@@ -1,0 +1,41 @@
+pagos:
+    pattern:  /
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:index" }
+
+pagos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:show" }
+
+pagos_new:
+    pattern:  /new
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:new" }
+
+pagos_create:
+    pattern:  /create
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:create" }
+    requirements: { _method: post }
+
+pagos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:edit" }
+
+pagos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:update" }
+    requirements: { _method: post|put }
+
+pagos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:delete" }
+    requirements: { _method: post|delete }
+
+pagos_do:
+    pattern:  /{id}/do
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:do" }
+
+pagos_doit:
+    pattern:  /{id}/doit
+    defaults: { _controller: "JorgeGespagosBundle:Pagos:doit" }
+    requirements: { _method: post|put }
+    
+

@@ -1,0 +1,7 @@
+parameters:
+#    jorge_gespagos.example.class: Jorge\GespagosBundle\Example
+
+services:
+#    jorge_gespagos.example:
+#        class: %jorge_gespagos.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

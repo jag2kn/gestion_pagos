@@ -1,0 +1,51 @@
+Jorge\GespagosBundle\Entity\Pagos:
+    type: entity
+    table: pagos
+    fields:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 128
+            nullable: false
+        periodo:
+            type: string
+            length: 32
+            nullable: false
+        constante:
+            type: boolean
+            nullable: true
+        monto:
+            type: integer
+            nullable: false
+        descripcion:
+            type: text
+            nullable: false
+        actualizacion:
+            type: datetime
+            nullable: false
+        creacion:
+            type: datetime
+            nullable: false
+        pagoRealizado:
+            type: integer
+            nullable: true
+            column: pago_realizado
+        fechaPago:
+            type: datetime
+            nullable: true
+            column: fecha_pago
+    manyToOne:
+        idUsuario:
+            targetEntity: Jorge\GespagosBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_usuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

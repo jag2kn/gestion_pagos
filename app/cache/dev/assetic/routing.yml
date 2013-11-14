@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /home/jag2kn/Documentos/Poli/PHP/ProyectoAula2/gespagos2_99/app/config/routing_dev.yml

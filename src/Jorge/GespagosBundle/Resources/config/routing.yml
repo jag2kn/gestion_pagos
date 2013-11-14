@@ -1,0 +1,34 @@
+login:
+    pattern:  /login
+    defaults: { _controller: JorgeGespagosBundle:Default:login }
+
+login_check:
+    pattern: /login_check
+
+
+logout:
+    pattern: /logout
+    defaults: { _controller: JorgeGespagosBundle:Default:logout }
+
+logout_check:
+    pattern: /logout_check
+
+registro:
+    pattern:  /registro
+    defaults: { _controller: JorgeGespagosBundle:Default:registro }
+
+
+
+homepage:
+    pattern:  /
+    defaults: { _controller: JorgeGespagosBundle:Default:index }
+
+
+jorge_gespagos_pagos:
+    resource: "@JorgeGespagosBundle/Resources/config/routing/pagos.yml"
+    prefix: /pagos
+    
+JorgeGespagosBundle_admin_usuario:
+    resource: "@JorgeGespagosBundle/Resources/config/routing/usuario.yml"
+    prefix:   /admin/usuario
+

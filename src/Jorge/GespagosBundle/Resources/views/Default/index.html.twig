@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+Gestión de pagos
+
+	{% if user %}
+		<li>{{ user.username }}</li>
+	{% else %}
+		<ul>
+			<li><a href="{{ path('login') }}">Ingresar al sistema</a></li>
+			<li><a href="{{ path('registro') }}">Registrarse</a></li>
+		</ul>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{# % extends '::base.html.twig' %}
+
+{% block body -%}
+	{{ form(formIngreso) }}
+{% endblock %#}
+
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+	
+    {{ form(form) }}
+    
+
+{% endblock %}
