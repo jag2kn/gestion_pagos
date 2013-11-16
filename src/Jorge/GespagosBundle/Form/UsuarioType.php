@@ -16,10 +16,18 @@ class UsuarioType extends AbstractType
     {
         $builder
             ->add('usuario', 'text', array('label' => 'Usuario'))
-            ->add('clave', 'password', array('label' => 'Clave'))
+            ->add('clave', 'repeated', array(
+					'type' => 'password',
+					'invalid_message' => 'Las claves deben ser iguales.',
+					'options' => array('attr' => array('class' => 'password-field')),
+					'required' => true,
+					'first_options'  => array('label' => 'Clave'),
+					'second_options' => array('label' => 'Repita la clave')
+				)
+			)
             ->add('nombres', 'text', array('label' => 'Nombres'))
             ->add('apellidos', 'text', array('label' => 'Apellidos'))
-            ->add('fecha', 'datetime', array('label' => 'Fecha Nacimiento'))
+            ->add('fecha', 'date', array('label' => 'Fecha Nacimiento'))
             ->add('correo', 'email', array('label' => 'Correo'))
 //            ->add('salt')
         ;
