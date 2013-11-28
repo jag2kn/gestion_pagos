@@ -12,56 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Pagos
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre", type="string", length=128, nullable=false)
-     */
-    private $nombre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="periodo", type="string", length=32, nullable=false)
-     */
-    private $periodo;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="constante", type="boolean", nullable=false)
-     */
-    private $constante;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="monto", type="integer", nullable=false)
-     */
-    private $monto;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="descripcion", type="text", nullable=false)
-     */
-    private $descripcion;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="actualizacion", type="datetime", nullable=false)
-     */
-    private $actualizacion;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="creacion", type="datetime", nullable=false)
-     */
-    private $creacion;
-
-    /**
+	/**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -69,9 +20,75 @@ class Pagos
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=128, nullable=false)
+     */
+    private $nombre;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="periodo", type="string", length=32, nullable=false)
+     */
+    private $periodo;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="constante", type="boolean", nullable=false)
+     */
+    private $constante;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="monto", type="integer", nullable=false)
+     */
+    private $monto;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=false)
+     */
+    private $descripcion;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="actualizacion", type="datetime", nullable=false)
+     */
+    private $actualizacion;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="creacion", type="datetime", nullable=false)
+     */
+    private $creacion;
+    
+	/**
+     * @var integer
+     */
+    private $pagoRealizado;
+    
+    /**
+     * @var \DateTime
+     */
+    private $fechaPago;
+    
+    /**
+     * @var \Jorge\GespagosBundle\Entity\Usuario
+     */
+    private $idUsuario;
+    
+    
+    
+    
+    
     /**
      * Set nombre
      *
@@ -242,10 +259,7 @@ class Pagos
     {
         return $this->id;
     }
-    /**
-     * @var \Jorge\GespagosBundle\Entity\Usuario
-     */
-    private $idUsuario;
+
 
 
     /**
@@ -270,15 +284,7 @@ class Pagos
     {
         return $this->idUsuario;
     }
-    /**
-     * @var integer
-     */
-    private $pagoRealizado;
-
-    /**
-     * @var \DateTime
-     */
-    private $fechaPago;
+   
 
 
     /**

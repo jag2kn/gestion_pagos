@@ -1,0 +1,45 @@
+<?php
+// src/Acme/HelloBundle/DataFixtures/ORM/LoadUserData.php
+
+namespace ProyectoAula\GespagosBundle\DataFixtures\ORM;
+
+use Doctrine\Common\DataFixtures\FixtureInterface;
+
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use ProyectoAula\GespagosBundle\Entity\Gesusuarios;
+use ProyectoAula\GespagosBundle\Entity\Geseventos;
+
+class LoadEventoData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
+{
+
+    /**
+     * {@inheritDoc}
+     */
+    public function load(ObjectManager $manager)
+    {
+		$evento = new Geseventos();
+
+
+		$evento->setNombreeve("Pago luz");
+		$evento->setDescripcion("Pago luz");
+		$evento->setPeriodicidad("Pago luz marzo");
+		$evento->setValorevento(120000);
+		$evento->setConsttiempo("si");
+		$evento->setEstado("C");
+		$evento->setFecreg(new \Datetime());
+		$evento->setFecactuali(new \Datetime());
+		$evento->setIdusuario($this->getReference('usuario'));
+
+		$manager->persist($evento);
+		$manager->flush();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 2; // the order in which fixtures will be loaded
+    }
+}

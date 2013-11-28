@@ -270,4 +270,60 @@ class Pagos
     {
         return $this->idUsuario;
     }
+    /**
+     * @var integer
+     */
+    private $pagoRealizado;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaPago;
+
+
+    /**
+     * Set pagoRealizado
+     *
+     * @param integer $pagoRealizado
+     * @return Pagos
+     */
+    public function setPagoRealizado($pagoRealizado)
+    {
+        $this->pagoRealizado = $pagoRealizado;
+    
+        return $this;
+    }
+
+    /**
+     * Get pagoRealizado
+     *
+     * @return integer 
+     */
+    public function getPagoRealizado()
+    {
+        return $this->pagoRealizado;
+    }
+
+    /**
+     * Set fechaPago
+     *
+     * @param \DateTime $fechaPago
+     * @return Pagos
+     */
+    public function setFechaPago($fechaPago)
+    {
+        $this->fechaPago = $fechaPago;
+    
+        return $this;
+    }
+
+    /**
+     * Get fechaPago
+     *
+     * @return \DateTime 
+     */
+    public function getFechaPago()
+    {
+        return $this->fechaPago;
+    }
 }
