@@ -1,13 +1,13 @@
 
 
 cache:
-	sudo chown ticketadmin:www-data app/cache -R
-	sudo chown ticketadmin:www-data app/logs -R
-	sudo chmod g+rw app/cache -R
-	sudo chmod g+rw app/logs/ -R
+	make permisos
 	sudo su www-data -c "php app/console cache:clear"
-	sudo chown ticketadmin:www-data app/cache -R
-	sudo chown ticketadmin:www-data app/logs -R
+	make permisos
+
+permisos:
+	sudo chown $(shell whoami):www-data app/cache -R
+	sudo chown $(shell whoami):www-data app/logs -R
 	sudo chmod g+rw app/cache -R
 	sudo chmod g+rw app/logs/ -R
 
