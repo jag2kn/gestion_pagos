@@ -32,26 +32,44 @@ class LoadUsuarioData extends AbstractFixture implements FixtureInterface, Order
      */
     public function load(ObjectManager $manager)
     {
-		$usuario = new Usuario();
-
-		$encoder = $this->container
-			->get('security.encoder_factory')
-			->getEncoder($usuario)
-		;
+	    //https://github.com/olea/lemarios/blob/master/nombres-propios-es.txt
+	    
+    	$nombres = explode("\n",file_get_contents("https://raw.github.com/olea/lemarios/master/nombres-propios-es.txt"));
+    	$apellidos = explode("\n",file_get_contents("https://raw.github.com/olea/lemarios/master/apellidos-es.txt"));
+    	
+    	//echo $nombres;
+		//\Doctrine\Common\Util\Debug::dump($nombres);
+		
     
-		$usuario->setUsuario('jorge');
-		$usuario->setClave($encoder->encodePassword("123456", ""));
-		$usuario->setNombres('Jorge');
-		$usuario->setApellidos('Gonzalez');
-		$usuario->setFecha(new \Datetime());
-		$usuario->setCorreo("jag2kn@gmail.com");
+	    for($i=0;$i<10;$i++){
+	    	$idnombre = array_rand($nombres, 1);
+	    	$idapellido = array_rand($apellidos, 1);
+	    	
+	    	$nombre = $nombres[$idnombre];
+	    	$apellido = $apellidos[$idapellido];
+		
+			$usuario = new Usuario();
 
-		$usuario->setSalt("");
+			$encoder = $this->container
+				->get('security.encoder_factory')
+				->getEncoder($usuario)
+			;
+			
+			$nombreusuario = strtolower($nombre{0}).strtolower($apellido);
+			$usuario->setUsuario($nombreusuario);
+			$usuario->setClave($encoder->encodePassword("A".$nombreusuario."*", ""));
+			$usuario->setNombres($nombre);
+			$usuario->setApellidos($apellido);
+			$usuario->setFecha(new \Datetime());
+			$usuario->setCorreo($nombreusuario."@poli.edu.co");
 
-        $this->addReference('usuario', $usuario);
+			$usuario->setSalt("");
 
-		$manager->persist($usuario);
-		$manager->flush();
+		    $this->addReference('usuario_'.$i, $usuario);
+
+			$manager->persist($usuario);
+			$manager->flush();
+		}
     }
 
     /**

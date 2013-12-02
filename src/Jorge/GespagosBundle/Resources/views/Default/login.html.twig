@@ -18,4 +18,13 @@
 		<button type="submit">Ingresar</button>
 		<a href="{{ path('homepage') }}">Cancelar</a>
 	</form>
+	
+	<h3>Usuarios existentes</h3>
+	<table>
+		<tr><th>Usuario</th><th>Posible Clave, si fue creado automaticamente</th></tr>
+	{% for usuario in usuarios %}
+		<tr><td>{{usuario.usuario}}</td><td>A{{usuario.usuario}}*</td></tr>
+	{% endfor %}
+	<table>
+	
 {% endblock %}

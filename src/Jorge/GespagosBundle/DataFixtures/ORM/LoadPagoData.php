@@ -19,21 +19,40 @@ class LoadPagosData extends AbstractFixture implements FixtureInterface, Ordered
      */
     public function load(ObjectManager $manager)
     {
-		$pago = new Pagos();
+    
+    	$pagos = array("Universidad", "Luz", "Telefono", "Agua", "Celular", "Internet");
+    	$periodos = array('semanal', 'quincenal', 'mensual', 'bimensual', 'semestral');
+    	
+	    	
+    
+    
+		for($i=0;$i<100;$i++){
+		
+	    	$nombrepago = $pagos[array_rand($pagos, 1)];
+	    	$periodo = $periodos[array_rand($periodos, 1)];
+		
+		
+			$pago = new Pagos();
 
-		$pago->setNombre("POLI 2013-II");
-		$pago->setDescripcion("Semestre 2013-II");
-		$pago->setMonto(4000000);
-		$pago->setConstante(1);
-		$pago->setPeriodo("semestral");
-		//$pago->setPagoRealizado(0); // Null
-		//$pago->setFechaPago();  // Null
-		$pago->setCreacion(new \Datetime());
-		$pago->setActualizacion(new \Datetime());
-		$pago->setIdusuario($this->getReference('usuario'));
+			$pago->setNombre($nombrepago);
+			// Un apartamento entre 100 y 900 y entre 10 y 35 cada uno
+			$pago->setDescripcion($nombrepago." APTO ".((rand(1,9)*100)+rand(10,35)));
+			$pago->setMonto(rand(500000,8000000));
+			$pago->setConstante(rand(0,1));
+			$pago->setPeriodo($periodo);
+			//$pago->setPagoRealizado(0); // Null
+			//$pago->setFechaPago();  // Null
+			$pago->setCreacion(new \Datetime());
+			$pago->setActualizacion(new \Datetime());
+			
+			$idUsuario = intval($i/10);
+			$usuario = $this->getReference('usuario_'.$idUsuario);
+			
+			$pago->setIdusuario($usuario);
 
-		$manager->persist($pago);
-		$manager->flush();
+			$manager->persist($pago);
+			$manager->flush();
+		}
     }
 
     /**

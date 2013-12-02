@@ -71,12 +71,17 @@ class DefaultController extends Controller
 			$error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
 			$session->remove(SecurityContext::AUTHENTICATION_ERROR);
 		}
+
+        $em = $this->getDoctrine()->getManager();
+        $usuarios = $em->getRepository('JorgeGespagosBundle:Usuario')->findAll();
+
 		return $this->render(
 				'JorgeGespagosBundle:Default:login.html.twig',
 				array(
 					// last username entered by the user
 					'last_username' => $session->get(SecurityContext::LAST_USERNAME),
 					'error'=> $error,
+					'usuarios'=>$usuarios,
 				)
 			);
 	}
